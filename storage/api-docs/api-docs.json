@@ -1,0 +1,346 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "L5 OpenApi",
+        "description": "L5 Swagger OpenApi description",
+        "contact": {
+            "email": "raghad20059@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0",
+        "x-logo": {
+            "url": "https://via.placeholder.com/190x90.png?text=L5-Swagger"
+        }
+    },
+    "paths": {
+        "/api/users/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "login",
+                "description": "Login by username, password",
+                "operationId": "authLogin",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "username",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "example": "RaghadKhaled"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successfully loged in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "user loged in"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "14|dfghjklkjhgfdcxs34576543nhgngh"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorised",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, user unauthorised"
+                                        },
+                                        "error": {
+                                            "type": "string",
+                                            "example": "Unauthorised"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/create": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "sign up",
+                "description": "sign up as user or manager",
+                "operationId": "authSignUp",
+                "requestBody": {
+                    "description": "Pass user credentials",
+                    "required": true,
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "required": [
+                                    "username",
+                                    "first_name",
+                                    "last_name",
+                                    "birth_date",
+                                    "gneder",
+                                    "role",
+                                    "email",
+                                    "password"
+                                ],
+                                "properties": {
+                                    "username": {
+                                        "type": "string",
+                                        "example": "RaghadKhaled"
+                                    },
+                                    "first_name": {
+                                        "type": "string",
+                                        "example": "Raghad"
+                                    },
+                                    "last_name": {
+                                        "type": "string",
+                                        "example": "Khaled"
+                                    },
+                                    "birth_date": {
+                                        "type": "string",
+                                        "format": "date",
+                                        "example": "2000-09-06"
+                                    },
+                                    "gender": {
+                                        "type": "string",
+                                        "example": "f OR m"
+                                    },
+                                    "nationality": {
+                                        "type": "string",
+                                        "example": "egyption"
+                                    },
+                                    "role": {
+                                        "type": "string",
+                                        "example": "manager OR fan"
+                                    },
+                                    "email": {
+                                        "type": "string",
+                                        "example": "Raghad@gmail.com"
+                                    },
+                                    "password": {
+                                        "type": "string",
+                                        "format": "password",
+                                        "example": "PassWord12345"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "user registered successfully",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "user registered successfully"
+                                        },
+                                        "token": {
+                                            "type": "string",
+                                            "example": "14|dfghjklkjhgfdcxs34576543nhgngh"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Error in input",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Sorry, user unauthorised"
+                                        },
+                                        "errors": {
+                                            "type": "object",
+                                            "example": "{'username': [ 'The username has already been taken.'],'email': ['The email has already been taken.']}"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "user info",
+                "description": "get ingormation of login user",
+                "operationId": "authInfo",
+                "responses": {
+                    "200": {
+                        "description": "Successfully loged in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "user info"
+                                        },
+                                        "user": {
+                                            "type": "object",
+                                            "example": {
+                                                "id": 5,
+                                                "username": "RaghadKhaled5",
+                                                "first_name": "raghad",
+                                                "last_name": "khaled",
+                                                "birth_date": "2000-06-09",
+                                                "nationality": "egyption",
+                                                "gender": "f",
+                                                "role": "manager",
+                                                "email": "raghad12347@gmail.com",
+                                                "email_verified_at": null,
+                                                "created_at": "2022-12-03T12:25:51.000000Z",
+                                                "updated_at": "2022-12-03T12:25:51.000000Z"
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorised",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        },
+        "/api/users/logout": {
+            "get": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "user logout",
+                "description": "logout user",
+                "operationId": "authLogout",
+                "responses": {
+                    "200": {
+                        "description": "Successfully loged in",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "status": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "user info"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorised",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Unauthenticated"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "bearerAuth": []
+                    }
+                ]
+            }
+        }
+    }
+}
