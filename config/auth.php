@@ -41,8 +41,13 @@ return [
             'provider' => 'users',
         ],
         'api' => [
-            'driver' => 'passport',
+            'driver' => 'sanctum',
             'provider' => 'users',
+        ],
+
+        'administrator' => [
+            'driver' => 'sanctum',
+            'provider' => 'administrators',
         ],
     ],
 
@@ -67,6 +72,11 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'administrators' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Administrator::class,
         ],
 
         // 'users' => [
@@ -97,6 +107,13 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+        'administrators' => [
+            'provider' => 'administrators',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+
     ],
 
     /*

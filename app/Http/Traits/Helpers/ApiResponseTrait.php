@@ -163,6 +163,22 @@ trait ApiResponseTrait
      *
      * @return JsonResponse
      */
+    protected function respondtextContent($text, $message)
+    {
+        return $this->apiResponse([
+            'success' => true,
+            'message' => $message,
+            'result' => $text
+        ], 200);
+    }
+
+    /**
+     * Respond with no content.
+     *
+     * @param string $message
+     *
+     * @return JsonResponse
+     */
     protected function respondNoContent($message = 'No Content Found')
     {
         return $this->apiResponse(['success' => false, 'message' => $message], 200);
@@ -213,7 +229,7 @@ trait ApiResponseTrait
      * @param bool|null $error_code
      * @return JsonResponse
      */
-    protected function respondError($message, int $statusCode = 400, Exception $exception = null, int $error_code = 1)
+    protected function respondError($message = null, int $statusCode = 400, Exception $exception = null, int $error_code = 1)
     {
 
         return $this->apiResponse(
