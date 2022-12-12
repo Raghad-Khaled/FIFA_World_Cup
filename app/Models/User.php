@@ -25,6 +25,7 @@ class User extends Authenticatable
         'gender',
         'nationality',
         'role',
+        'be_manager',
         'email',
         'password',
     ];

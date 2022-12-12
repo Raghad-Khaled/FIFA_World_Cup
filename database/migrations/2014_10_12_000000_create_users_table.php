@@ -21,7 +21,8 @@ return new class extends Migration
             $table->date('birth_date');
             $table->string('nationality')->nullable();
             $table->enum('gender', ['m', 'f']);
-            $table->enum('role', ['manager', 'fan']);
+            $table->enum('role', ['manager', 'fan'])->default('fan');
+            $table->boolean('be_manager');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

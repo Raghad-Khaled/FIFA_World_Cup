@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Traits\Helpers\ApiResponseTrait;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\UpdateRequest;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
@@ -63,20 +64,10 @@ class UserController extends Controller
         if (auth()->attempt($data)) {
             $user = auth()->user();
             $user = User::find($user->id);
-            $token = $user->createToken("API TOKEN");//->plainTextToken;
-            return $this->respondWithResourceCollection(new ResourceCollection(["token"=>$token]),"user loged in");
-            // return response()->json([
-            //     'status' => true,
-            //     'message' => 'user loged in',
-            //     'token' => $token
-            // ], 200);
+            $token = $user->createToken("API TOKEN")->plainTextToken;
+            return $this->respondtextContent($token, "user loged in");
         } else {
             return $this->respondUnAuthorized("user Unauthorised");
-            // return response()->json([
-            //     'status' => false,
-            //     'message' => 'user unauthorised',
-            //     'error' => 'Unauthorised'
-            // ], 401);
         }
     }
 
@@ -127,16 +118,11 @@ class UserController extends Controller
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
+        $input['be_manager'] = $input['role'] == 'manager' ? 1 : 0;
+        $input['role'] = 'fan';
         $user = User::create($input);
-        $token = $user->createToken("API TOKEN");
-
-        // return response()->json([
-        //     'status' => true,
-        //     'message' => 'user registered successfully',
-        //     'token' => $token
-        // ], 200);
-        // $token=json_decode($token);
-        return $this->respondWithResourceCollection(new ResourceCollection(["token"=>$token]),"user registered successfully");
+        $token = $user->createToken("API TOKEN")->plainTextToken;
+        return $this->respondtextContent($token, "user registered successfully");
     }
     /**
      * @OA\Get(
@@ -182,6 +168,42 @@ class UserController extends Controller
         return $this->respondWithResourceCollection(new ResourceCollection(["user"=>$user]),"user info");
     }
 
+    public function bemanager()
+    {
+
+        # get all users want to be manager
+        $users = User::where('be_manager', 1)->get();
+        return $this->respondWithResourceCollection(new ResourceCollection(["users" => $users]), "users want to be manager");
+    }
+
+    public function manager($id)
+    {
+
+        # get user with id
+        $user = User::find($id);
+        # update user role to manager
+        $user->role = 'manager';
+        $user->be_manager = 0;
+        $user->save();
+        return $this->respondWithResourceCollection(new ResourceCollection(["user" => $user]), "users want to be manager");
+    }
+
+    public function update(UpdateRequest $request)
+    {
+
+        #get current user
+        $user = auth()->user();
+        # update current user
+        $user = User::find($user->id);
+        #check if request has password
+        if ($request->has('password')) {
+            #hash password
+            $request['password'] = Hash::make($request['password']);
+        }
+        #update user exept username and email
+        $user->update($request->all());
+        return $this->respondWithResourceCollection(new ResourceCollection(["user" => $user]), "user updated successfully");
+    }
 
     /**
      * @OA\Get(
@@ -248,28 +270,7 @@ class UserController extends Controller
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
 
     /**
      * Remove the specified resource from storage.

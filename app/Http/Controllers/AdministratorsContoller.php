@@ -47,7 +47,7 @@ class AdministratorsContoller extends Controller
         if (auth()->attempt($data)) {
             $admin = auth()->user();
             $admin = Administrator::find($admin->id);
-            $token = $admin->createToken("API TOKEN"); //->plainTextToken;
+            $token = $admin->createToken("API TOKEN")->plainTextToken;
             return $this->respondtextContent($token,"admin loged in");
         } else {
             return $this->respondUnAuthorized("user Unauthorised");
