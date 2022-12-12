@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministratorsContoller;
+use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -29,6 +30,12 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::post('/team/store', 'store');
         Route::get('/team/index', 'index');
         Route::delete('/team/destroy/{id}', 'destroy');
+    });
+
+    Route::controller(StadiumController::class)->group(function () {
+        Route::post('/stadium/store', 'store');
+        Route::get('/stadium/index', 'index');
+        Route::delete('/stadium/destroy/{id}', 'destroy');
     });
 });
 
