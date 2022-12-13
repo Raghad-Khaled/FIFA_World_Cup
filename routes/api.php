@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdministratorsContoller;
+use App\Http\Controllers\MatcheController;
 use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\UserController;
@@ -37,9 +38,16 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/stadium/index', 'index');
         Route::delete('/stadium/destroy/{id}', 'destroy');
     });
+
+    Route::controller(MatcheController::class)->group(function () {
+        Route::post('/match/store', 'store');
+        Route::get('/match/index', 'index');
+        Route::delete('/match/destroy/{id}', 'destroy');
+        Route::post('/match/update/{id}', 'update');
+    });
 });
 
-Route::middleware('auth:administrator')->controller(AdministratorsContoller::class)->group(function () {
+Route::middleware('auth:administrator')->controller(UserController::class)->group(function () {
     Route::get('/users/index', 'getall');
     Route::post('/users/delete/{id}', 'deleteuser');
     Route::get('/users/bemanager', 'bemanager');
