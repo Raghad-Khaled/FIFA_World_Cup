@@ -4,6 +4,7 @@ use App\Http\Controllers\AdministratorsContoller;
 use App\Http\Controllers\MatcheController;
 use App\Http\Controllers\StadiumController;
 use App\Http\Controllers\TeamController;
+use App\Http\Controllers\TicketController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -41,10 +42,25 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::controller(MatcheController::class)->group(function () {
         Route::post('/match/store', 'store');
-        Route::get('/match/index', 'index');
         Route::delete('/match/destroy/{id}', 'destroy');
         Route::post('/match/update/{id}', 'update');
     });
+    Route::controller(TicketController::class)->group(function () {
+        Route::post('/ticket/store', 'store');
+        Route::delete('/ticket/destroy/{id}', 'destroy');
+        // Route::post('/match/update/{id}', 'update');
+    });
+});
+
+Route::controller(MatcheController::class)->group(function () {
+    Route::get('/match/index', 'index');
+    Route::get('/match/index/{id}', 'getmatch');
+});
+
+Route::controller(TicketController::class)->group(function () {
+    Route::get('/ticket/match/{id}', 'formatch');
+    // Route::delete('/match/destroy/{id}', 'destroy');
+    // Route::post('/match/update/{id}', 'update');
 });
 
 Route::middleware('auth:administrator')->controller(UserController::class)->group(function () {

@@ -15,15 +15,24 @@ class MatcheController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function getmatch($id)
+    {
+        // get all teams
+        $match = Matche::find($id);
+        return $this->respondWithResourceCollection(new ResourceCollection(["match" => $match]), "match details");
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
         // get all teams
-        if (auth()->user()->role == "manager") {
-            $matches = Matche::all();
-            return $this->respondWithResourceCollection(new ResourceCollection(["matches" => $matches]), "All Matches");
-        } else {
-            return $this->respondUnAuthorized("user UnAuthorised");
-        }
+
+        $matches = Matche::all();
+        return $this->respondWithResourceCollection(new ResourceCollection(["matches" => $matches]), "All Matches");
     }
 
     /**
@@ -46,7 +55,16 @@ class MatcheController extends Controller
             'stadium_id' => 'required|exists:stadiums,id'
         ]);
         if (auth()->user()->role == "manager") {
-            # create team
+            // check if team 1 has a match in the same day
+            $matches1 = Matche::where('date', $request->date)->where('team1_id', $request->team1_id)->get();
+            if (count($matches1) > 0) {
+                return $this->respondError("Team 1 has a match in the same day");
+            }
+            // check if team 2 has a match in the same day
+            $matches2 = Matche::where('date', $request->date)->where('team2_id', $request->team2_id)->get();
+            if (count($matches2) > 0) {
+                return $this->respondError("Team 2 has a match in the same day");
+            }
             $match = Matche::create($request->all());
 
             return $this->respondWithResourceCollection(new ResourceCollection(["match" => $match]), "Match created");

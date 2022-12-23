@@ -25,4 +25,14 @@ class Matche extends Model
         'lineman2',
         'stadium_id'
     ];
+
+    // get stadium
+    /**
+     * Get the stadium that owns the match.
+     */
+    public function stadium()
+    {
+        return $this->belongsTo(Stadium::class);
+    }
+
 }
