@@ -32,6 +32,12 @@ class MatcheController extends Controller
         // get all teams
 
         $matches = Matche::all();
+        # replace team id with team name
+        foreach ($matches as $match) {
+            $match->stadium_name = $match->stadium->name;
+            $match->team1_name = $match->team1->name;
+            $match->team2_name = $match->team2->name;
+        }
         return $this->respondWithResourceCollection(new ResourceCollection(["matches" => $matches]), "All Matches");
     }
 

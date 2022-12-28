@@ -8,6 +8,7 @@ use App\Models\Administrator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\ResourceCollection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AdministratorsContoller extends Controller
@@ -36,16 +37,16 @@ class AdministratorsContoller extends Controller
         return $this->respondtextContent($token, "admin registered successfully");
     }
 
-    public function login(RegisterAdminRequest $request)
+    public function login(Request $request)
     {
 
         $data = [
             'username' => $request->username,
             'password' => $request->password
         ];
-
-        if (auth()->attempt($data)) {
-            $admin = auth()->user();
+        # authorize with gard admin
+        if (Auth::guard('administrator')->attempt($data)) {
+            $admin = Auth::guard('administrator')->user();
             $admin = Administrator::find($admin->id);
             $token = $admin->createToken("API TOKEN")->plainTextToken;
             return $this->respondtextContent($token,"admin loged in");

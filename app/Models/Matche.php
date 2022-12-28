@@ -35,4 +35,14 @@ class Matche extends Model
         return $this->belongsTo(Stadium::class);
     }
 
+    public function team1()
+    {
+        return $this->belongsTo(Team::class, 'team1_id');
+    }
+
+    public function team2()
+    {
+        return $this->belongsTo(Team::class, 'team2_id');
+    }
+
 }
