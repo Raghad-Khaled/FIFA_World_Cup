@@ -63,7 +63,7 @@ Route::controller(TicketController::class)->group(function () {
     // Route::post('/match/update/{id}', 'update');
 });
 
-Route::middleware('auth:administrator')->controller(UserController::class)->group(function () {
+Route::middleware('auth:administratorapi')->controller(UserController::class)->group(function () {
     Route::get('/users/index', 'getall');
     Route::post('/users/delete/{id}', 'deleteuser');
     Route::get('/users/bemanager', 'bemanager');

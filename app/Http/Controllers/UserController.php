@@ -243,9 +243,10 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function getall()
     {
-        //
+        $users = User::all();
+        return $this->respondWithResourceCollection(new ResourceCollection(["users" => $users]), "users");
     }
 
     /**
