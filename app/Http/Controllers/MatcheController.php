@@ -19,6 +19,9 @@ class MatcheController extends Controller
     {
         // get all teams
         $match = Matche::find($id);
+        $match->stadium_name = $match->stadium->name;
+        $match->team1_name = $match->team1->name;
+        $match->team2_name = $match->team2->name;
         return $this->respondWithResourceCollection(new ResourceCollection(["match" => $match]), "match details");
     }
 
