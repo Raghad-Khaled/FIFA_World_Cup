@@ -47,6 +47,7 @@ Route::middleware('auth:sanctum')->group(function () {
     });
     Route::controller(TicketController::class)->group(function () {
         Route::post('/ticket/store', 'store');
+        Route::get('/ticket/allreserved', 'get_tickets');
         Route::delete('/ticket/destroy/{id}', 'destroy');
         // Route::post('/match/update/{id}', 'update');
     });

@@ -98,4 +98,21 @@ class TicketController extends Controller
             return $this->respondUnAuthorized("user UnAuthorised");
         }
     }
+
+    /**
+     * get all tickets of user
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function get_tickets(Request $request)
+    {
+        if (auth()->user()->role == "fan") {
+            $user = auth()->user();
+            $tickets = Ticket::where('user_id', $user->id)->get();
+            return $this->respondWithResourceCollection(new ResourceCollection(["tickets" => $tickets]), "tickets");
+        } else {
+            return $this->respondUnAuthorized("user UnAuthorised");
+        }
+    }
 }
