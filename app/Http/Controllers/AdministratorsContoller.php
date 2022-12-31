@@ -61,16 +61,7 @@ class AdministratorsContoller extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function deleteuser($id)
-    {
-        $user = User::find($id);
-        if($user->delete()){
-            return $this->respondSuccess("user deleted Successfully");
-        }else{
-            return $this->respondError();
-        }
-
-    }
+    
 
     /**
      * Show the form for creating a new resource.
