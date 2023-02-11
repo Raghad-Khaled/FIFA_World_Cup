@@ -259,7 +259,16 @@ class UserController extends Controller
     {
         //
     }
+    public function deleteuser($id)
+    {
+        $user = User::find($id);
+        if($user->delete()){
+            return $this->respondSuccess("user deleted Successfully");
+        }else{
+            return $this->respondError();
+        }
 
+    }
     /**
      * Display the specified resource.
      *

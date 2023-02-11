@@ -66,7 +66,7 @@ Route::controller(TicketController::class)->group(function () {
 
 Route::middleware('auth:administratorapi')->controller(UserController::class)->group(function () {
     Route::get('/users/index', 'getall');
-    Route::post('/users/delete/{id}', 'deleteuser');
+    Route::delete('/users/delete/{id}', 'deleteuser');
     Route::get('/users/bemanager', 'bemanager');
     Route::put('/users/bemanager/{id}', 'manager');
 });
