@@ -1,66 +1,100 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<div align="center">
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+<H1>
+FIFA Qatar 2022 <br>🎫 Booking System 🎫
+</H1>
 
-## About Laravel
+<img src="assets\images\logo2.png" alt="logo" width="200"  />
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+</div>
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## 📌 Introduction
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+This is a simple booking system for FIFA Qatar 2022. This project is made using Flutter and Laravel. This project is made for learning purpose only.
 
-## Learning Laravel
+## 📌 Features
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 🤸‍♀️ Fan
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- Can register and login.
+- Can book tickets.
+- Can see his/her booking history.
+- Can delete his/her booking if the match is after 3 days or more.
+- Can see the match details.
+- Can edit his/her profile.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 👩‍💼👨‍💼 Manager
 
-## Laravel Sponsors
+- Can register and login.
+- Can create new match.
+- Can edit the details of an existing match.
+- Can add new stadium.
+- Can see the match details.
+- Can edit his/her profile.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 👩‍💻 Admin
 
-### Premium Partners
+- Can approve new users requets to become a manager.
+- Can delete existing users.
+- Can view all the users of the system.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## 📌 Flutter Repo
+<a href="https://github.com/DoniaEsawi/CMP-FIFA-World-Cup-Booking" target="_blank">FIFA Qatar 2022</a>
 
-## Contributing
+## 📌 Demo
+![1](https://user-images.githubusercontent.com/56982963/210158989-7888ac93-b3b8-46e2-8355-67cb06911915.png)
+![2](https://user-images.githubusercontent.com/56982963/210158990-b6849c43-47bb-4f0c-80d6-218f6784807f.png)
+![3](https://user-images.githubusercontent.com/56982963/210158991-12115644-b0e4-44b2-88eb-6360e0ef4d86.png)
+![4](https://user-images.githubusercontent.com/56982963/210158992-cf708faf-94af-427f-9064-8c6427110b3f.png)
+![5](https://user-images.githubusercontent.com/56982963/210158993-66516942-f60d-482f-9c0c-4df72a39d923.png)
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+https://user-images.githubusercontent.com/56982963/210158405-62ca8abb-e0b8-48d0-b3ec-7fd0a5d751b0.mp4
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+https://user-images.githubusercontent.com/56982963/210158456-b271d806-9d0e-4b35-bdb6-3d31cfe218fd.mp4
+
+
+
+https://user-images.githubusercontent.com/56982963/210158508-0c50251d-e158-4ad0-a7f5-f08f0dbcd303.mp4
+
+
+![all_matches](https://user-images.githubusercontent.com/56982963/210158598-0ab77862-cd50-49d7-af26-8345276615af.png)
+
+
+
+https://user-images.githubusercontent.com/56982963/210158646-491f9811-4e90-465d-8054-f6e428c9a24d.mp4
+
+
+https://user-images.githubusercontent.com/56982963/210158578-16f5def3-498e-4c7a-be02-42511faba0cd.mp4
+
+
+
+https://user-images.githubusercontent.com/56982963/210158729-9689a647-fe72-4596-b8c0-3486d6961455.mp4
+
+
+
+
+https://user-images.githubusercontent.com/56982963/210158758-edc0a409-e461-47a7-bc46-4f275fe0a2d5.mp4
+
+
+
+
+
+
+https://user-images.githubusercontent.com/56982963/210158681-312023d8-8165-4633-8951-d2c445012aed.mp4
+
+
+
+![404](https://user-images.githubusercontent.com/56982963/210158608-9a78985b-1fe5-4d5d-9ecb-37f9c90e4e38.png)
+
+![unauthorized](https://user-images.githubusercontent.com/56982963/210158619-f321d77a-4eb0-473c-805d-adea3d892360.png)
+
+
+## 📌 Tools Used
+
+- Flutter
+- Laravel
